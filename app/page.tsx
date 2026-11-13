@@ -191,12 +191,19 @@ export default async function Home() {
           </div>
           <div className="glist">
             {PRODUCTS.slice(0, 3).map((p) => (
-              <div key={p.slug} className="product">
+              <Link key={p.slug} href={`/shop#${p.slug}`} className="product">
+                {p.image && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img className="product-cover" src={p.image} alt={`${p.title} cover`} width={640} height={828} loading="lazy" />
+                )}
                 <span className="soon">{p.status === "live" ? "OUT NOW" : "DROPPING SOON"}</span>
                 <h3>{p.title}</h3>
                 <p>{p.blurb}</p>
-                <span className="price">{p.kind}</span>
-              </div>
+                <span className="price">
+                  {p.kind}
+                  {p.status === "live" && p.price ? ` · $${p.price}` : ""}
+                </span>
+              </Link>
             ))}
           </div>
         </div>

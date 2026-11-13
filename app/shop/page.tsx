@@ -1,16 +1,33 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
 import { NewsletterForm } from "@/components/Newsletter";
-import { PRODUCTS } from "@/lib/products";
+import { liveProducts, PRODUCTS } from "@/lib/products";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Shop: AI Playbooks & Guides",
-  description: "Digital playbooks and guides from DarkWire Media: practical, tested ways to put AI to work. First drops coming soon.",
+  description: "Digital playbooks and guides from DarkWire Media: the AI Autopilot Playbook, AI for Small Business starter kit and the Fact-Check Field Guide. Instant PDF download.",
   alternates: { canonical: "/shop" },
 };
 
 export default function Shop() {
+  const live = liveProducts();
   return (
     <>
+      {live.length > 0 && (
+        <JsonLd
+          data={live.map((p) => ({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: p.title,
+            description: p.blurb,
+            image: p.image ? `${SITE_URL}${p.image}` : undefined,
+            brand: { "@type": "Brand", name: "DarkWire Media" },
+            url: `${SITE_URL}/shop#${p.slug}`,
+            offers: { "@type": "Offer", price: p.price, priceCurrency: "USD", availability: "https://schema.org/InStock", url: p.checkout },
+          }))}
+        />
+      )}
       <section className="page-head">
         <div className="wrap">
           <div className="kicker">The shop</div>
@@ -24,6 +41,10 @@ export default function Shop() {
         <div className="wrap glist">
           {PRODUCTS.map((p) => (
             <div key={p.slug} className="product" id={p.slug}>
+              {p.image && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img className="product-cover" src={p.image} alt={`${p.title} cover`} width={640} height={828} loading="lazy" />
+              )}
               <span className="soon" style={p.status === "live" ? { color: "var(--green)", borderColor: "rgba(61,255,160,.5)" } : undefined}>
                 {p.status === "live" ? "OUT NOW" : "DROPPING SOON"}
               </span>
@@ -38,7 +59,8 @@ export default function Shop() {
               )}
               <span className="price">
                 {p.kind}
-                {p.price ? ` · $${p.price}` : ""}
+                {p.pages ? ` · ${p.pages} pages` : ""}
+                {p.status === "live" && p.price ? ` · $${p.price}` : ""}
               </span>
               {p.status === "live" && p.checkout ? (
                 <a className="btn solid" href={p.checkout} target="_blank" rel="noopener noreferrer">
