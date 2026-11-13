@@ -5,6 +5,7 @@ import { Follow } from "@/components/Follow";
 import { JsonLd } from "@/components/JsonLd";
 import { NewsletterForm } from "@/components/Newsletter";
 import { allGuides, guide } from "@/lib/guides";
+import { PRODUCTS } from "@/lib/products";
 import { SITE, SITE_URL } from "@/lib/site";
 
 export const generateStaticParams = () => allGuides().map((g) => ({ slug: g.slug }));
@@ -109,6 +110,30 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           )}
         </div>
       </div>
+      {(() => {
+        const deeper = PRODUCTS.find((x) => x.guides?.includes(g.slug));
+        if (!deeper) return null;
+        return (
+          <section className="section" style={{ marginTop: 56 }}>
+            <div className="wrap">
+              <Link href={`/shop/${deeper.slug}`} className="deeper">
+                {deeper.image && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={deeper.image} alt={`${deeper.title} cover`} width={640} height={828} loading="lazy" />
+                )}
+                <div>
+                  <div className="kicker">Go deeper</div>
+                  <h3>{deeper.title}</h3>
+                  <p>{deeper.blurb}</p>
+                  <span className="more">
+                    See what&apos;s inside{deeper.status === "live" && deeper.price ? ` · $${deeper.price}` : ""} →
+                  </span>
+                </div>
+              </Link>
+            </div>
+          </section>
+        );
+      })()}
       {others.length > 0 && (
         <section className="section" style={{ marginTop: 56 }}>
           <div className="wrap">

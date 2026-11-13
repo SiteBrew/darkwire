@@ -14,11 +14,12 @@ export default function Terms() {
         <h2>Our content</h2>
         <p>DarkWire&apos;s text, graphics and branding belong to DarkWire Media. You&apos;re welcome to share links and short quotes with credit. Linked articles belong to their publishers.</p>
         <h2>Digital products</h2>
-        <p>Digital products are for your personal or internal business use and may not be resold or redistributed. Because they&apos;re delivered instantly, sales are final, but if a file doesn&apos;t work or isn&apos;t what was described, contact us and we&apos;ll make it right.</p>
+        <p>Digital products are for your personal or internal business use and may not be resold or redistributed. Payments are processed securely by Stripe; DarkWire never sees or stores your card details. After checkout you get instant access to your download page, and we email you a link to it.</p>
+        <p>Because downloads are instant, sales are final. If a file doesn&apos;t work or isn&apos;t what was described, email support@darkwire-media.com and we&apos;ll fix it or refund you.</p>
         <h2>Links</h2>
         <p>We link to other websites for sourcing and reference. We&apos;re not responsible for their content.</p>
         <h2>Contact</h2>
-        <p>Questions? Send us a message on Instagram at @darkwire.media.</p>
+        <p>Questions or order help? Email support@darkwire-media.com, or message us on Instagram at @darkwire.media.</p>
       </div>
     </section>
   );

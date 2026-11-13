@@ -191,7 +191,7 @@ export default async function Home() {
           </div>
           <div className="glist">
             {PRODUCTS.slice(0, 3).map((p) => (
-              <Link key={p.slug} href={`/shop#${p.slug}`} className="product">
+              <Link key={p.slug} href={`/shop/${p.slug}`} className="product">
                 {p.image && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img className="product-cover" src={p.image} alt={`${p.title} cover`} width={640} height={828} loading="lazy" />

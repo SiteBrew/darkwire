@@ -21,9 +21,9 @@ export default function Privacy() {
           <li>We don&apos;t run third-party advertising trackers on this site.</li>
         </ul>
         <h2>Service providers</h2>
-        <p>The site is hosted by Vercel. Newsletter sign-ups are stored securely and will be managed with an email service provider, which processes your email only to deliver the newsletter. If you buy a digital product, the payment provider shown at checkout handles your payment details; we never see your card number.</p>
+        <p>The site is hosted by Vercel. Newsletter sign-ups are stored securely and will be managed with an email service provider, which processes your email only to deliver the newsletter. If you buy a digital product, Stripe handles your payment details; we never see your card number. We use the email address from your order only to send you your download link and help with that order.</p>
         <h2>Your choices</h2>
-        <p>Every newsletter email has a one-click unsubscribe link. To have your email deleted from our list entirely, send us a message on Instagram (@darkwire.media) and we&apos;ll remove it.</p>
+        <p>Every newsletter email has a one-click unsubscribe link. To have your email deleted from our list entirely, email support@darkwire-media.com or message us on Instagram (@darkwire.media) and we&apos;ll remove it.</p>
         <h2>Children</h2>
         <p>This site isn&apos;t directed at children under 13, and we don&apos;t knowingly collect their information.</p>
         <h2>Changes</h2>

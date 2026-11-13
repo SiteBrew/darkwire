@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SUPPORT_EMAIL } from "@/lib/products";
 import { SITE } from "@/lib/site";
 import { FollowIcons } from "./Follow";
 import { Mark, Wordmark } from "./Mark";
@@ -46,6 +47,7 @@ export function Footer() {
               <li><Link href="/privacy">Privacy</Link></li>
               <li><Link href="/terms">Terms</Link></li>
               <li><a href="/feed.xml">RSS feed</a></li>
+              <li><a href={`mailto:${SUPPORT_EMAIL}`}>Contact &amp; support</a></li>
             </ul>
           </div>
         </div>

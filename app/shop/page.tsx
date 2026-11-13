@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { NewsletterForm } from "@/components/Newsletter";
@@ -42,13 +43,17 @@ export default function Shop() {
           {PRODUCTS.map((p) => (
             <div key={p.slug} className="product" id={p.slug}>
               {p.image && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img className="product-cover" src={p.image} alt={`${p.title} cover`} width={640} height={828} loading="lazy" />
+                <Link href={`/shop/${p.slug}`} aria-label={`${p.title}: see what's inside`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img className="product-cover" src={p.image} alt={`${p.title} cover`} width={640} height={828} loading="lazy" />
+                </Link>
               )}
               <span className="soon" style={p.status === "live" ? { color: "var(--green)", borderColor: "rgba(61,255,160,.5)" } : undefined}>
                 {p.status === "live" ? "OUT NOW" : "DROPPING SOON"}
               </span>
-              <h3>{p.title}</h3>
+              <h3>
+                <Link href={`/shop/${p.slug}`}>{p.title}</Link>
+              </h3>
               <p>{p.blurb}</p>
               {p.bullets && (
                 <ul style={{ color: "var(--soft)", fontSize: 14.5, paddingLeft: 18 }}>
@@ -62,11 +67,16 @@ export default function Shop() {
                 {p.pages ? ` · ${p.pages} pages` : ""}
                 {p.status === "live" && p.price ? ` · $${p.price}` : ""}
               </span>
-              {p.status === "live" && p.checkout ? (
-                <a className="btn solid" href={p.checkout} target="_blank" rel="noopener noreferrer">
-                  Get it{p.price ? ` · $${p.price}` : ""}
-                </a>
-              ) : null}
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                {p.status === "live" && p.checkout ? (
+                  <a className="btn solid" href={p.checkout} rel="noopener">
+                    Get it{p.price ? ` · $${p.price}` : ""}
+                  </a>
+                ) : null}
+                <Link className="btn ghost" href={`/shop/${p.slug}`}>
+                  Look inside
+                </Link>
+              </div>
             </div>
           ))}
         </div>
@@ -77,7 +87,7 @@ export default function Shop() {
             <div>
               <div className="kicker">First access</div>
               <h2>Get the drops first.</h2>
-              <p>Subscribers hear about every new playbook the day it lands, usually with a launch discount.</p>
+              <p>Subscribers hear about every new playbook the day it lands.</p>
             </div>
             <NewsletterForm source="shop" cta="Notify me" />
           </div>
