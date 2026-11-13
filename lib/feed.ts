@@ -68,6 +68,9 @@ export async function getStory(slug: string): Promise<Story | null> {
   return one.stories[0] || null;
 }
 
+// DarkWire's TikTok handle (the crew only knows the display name, "DarkWire Media")
+const TIKTOK = "https://www.tiktok.com/@darkwire.media2";
+
 const DEFAULT_SOCIALS: Socials = { instagram: "https://www.instagram.com/darkwire.media/", youtube: null, tiktokName: null, bluesky: null };
 
 /** Where to follow DarkWire. Env vars win (set NEXT_PUBLIC_TIKTOK_URL etc. in Vercel), then what the crew knows. */
@@ -77,7 +80,7 @@ export async function getSocials() {
   const tiktokGuess = s.tiktokName && /^[a-z0-9._]{2,24}$/i.test(s.tiktokName) ? `https://www.tiktok.com/@${s.tiktokName}` : null;
   return [
     { key: "instagram", label: "Instagram", url: env("NEXT_PUBLIC_INSTAGRAM_URL") || s.instagram },
-    { key: "tiktok", label: "TikTok", url: env("NEXT_PUBLIC_TIKTOK_URL") || tiktokGuess },
+    { key: "tiktok", label: "TikTok", url: env("NEXT_PUBLIC_TIKTOK_URL") || tiktokGuess || TIKTOK },
     { key: "youtube", label: "YouTube", url: env("NEXT_PUBLIC_YOUTUBE_URL") || s.youtube },
     { key: "bluesky", label: "Bluesky", url: env("NEXT_PUBLIC_BLUESKY_URL") || (s.bluesky ? s.bluesky.toLowerCase() : null) },
   ].filter((x): x is { key: string; label: string; url: string } => !!x.url);
