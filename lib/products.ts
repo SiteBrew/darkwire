@@ -39,7 +39,7 @@ export const PRODUCTS: Product[] = [
     pages: 27,
     image: "/shop/ai-for-small-business.jpg",
     status: "live",
-    checkout: "https://buy.stripe.com/cNi3cwc94eV6b40dka9R601",
+    checkout: "https://buy.stripe.com/bJebJ2ehc4gs7RO2Fw9R602",
     bullets: [
       "12 workflows with prompts: reviews, emails, social posts, job ads, quotes, SOPs",
       "The 30-minute setup that makes AI sound like your business",
@@ -56,7 +56,7 @@ export const PRODUCTS: Product[] = [
     pages: 32,
     image: "/shop/fact-check-field-guide.jpg",
     status: "live",
-    checkout: "https://buy.stripe.com/bJebJ2ehc4gs7RO2Fw9R602",
+    checkout: "https://buy.stripe.com/cNi3cwc94eV6b40dka9R601",
     bullets: [
       "The five-check method and a verdict scale from Confirmed to False",
       "Spot AI images, deepfakes, recycled video and fake screenshots",
