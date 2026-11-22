@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { Ticker } from "@/components/Ticker";
 import { getFeed, getSocials } from "@/lib/feed";
 import { SITE, SITE_URL } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const sans = localFont({ src: "./fonts/Inter.woff2", variable: "--font-sans", weight: "100 900", display: "swap" });
@@ -59,6 +60,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <main id="main">{children}</main>
         <Footer />
         <JsonLd data={[org, site]} />
+        <Analytics />
       </body>
     </html>
   );
