@@ -52,8 +52,10 @@ export function Footer() {
           </div>
         </div>
         <div className="fine">
-          <span>© {new Date().getFullYear()} DarkWire Media</span>
-          <span>Signal over noise</span>
+          <span>© {new Date().getFullYear()} DarkWire Media · Signal over noise</span>
+          <span className="credit">
+            Built and maintained by <a href="https://sitebrew.co">SiteBrew</a>
+          </span>
         </div>
       </div>
     </footer>

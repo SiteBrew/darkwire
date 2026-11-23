@@ -251,6 +251,8 @@ img { max-width: 100%; display: block; }
 .footer ul { list-style: none; display: grid; gap: 10px; }
 .footer li a { color: var(--soft); font-size: 14.5px; }
 .footer li a:hover { color: var(--cyan); }
+.footer .credit a { color: inherit; text-decoration: underline; text-decoration-color: rgba(232, 232, 232, 0.25); text-underline-offset: 3px; transition: color 0.15s; }
+.footer .credit a:hover { color: var(--cyan); }
 .footer .fine { margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-family: var(--font-mono), monospace; font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
 
 /* ---------- responsive ---------- */
